@@ -17,6 +17,7 @@ const GAME_DATA = {
     // === 隐藏用户数据库（通过游戏内发现才能使用）===
     hiddenUsers: {
         "88-VANCE-AUX": { clearance: 2, name: "L. VANCE (AUX)" },
+        "77-THORNE-RES": { clearance: 3, name: "A. THORNE [INFECTED]", infected: true }, // 被感染的账号
         "K-DIR-01": { clearance: 4, name: "DIRECTOR KAELEN" }
     },
 
@@ -251,15 +252,25 @@ Evans 已被强制进行记忆删除并降级为 D 级人员。`
             title: "Re: 投诉 - Thorne 博士的违规操作",
             type: "MAIL",
             scl: 2,
-            keywords: ["complaint", "thorne", "security", "violation", "投诉", "违规"],
+            keywords: ["complaint", "thorne", "security", "violation", "投诉", "违规", "77"],
             content: `收件人：安全部主管
 发件人：IT 部门
 
-我们再次收到系统警报。Aris Thorne 博士一直在使用他的研究专用账号 [77-THORNE-RES] 绕过 B4 层的生物安全协议。
-他声称他的研究项目“不需要物理防护”，因为研究对象是“非物质的”。
+我们再次收到系统警报。Aris Thorne 博士一直在使用他的研究专用账号 77-THORNE-RES 绕过 B4 层的生物安全协议。
+他声称他的研究项目"不需要物理防护"，因为研究对象是"非物质的"。
 
 这严重违反了规定。如果他再这样下去，我们可能面临严重的收容失效风险。
-请你们去和他谈谈，他根本不听我们 IT 部门的话。`
+请你们去和他谈谈，他根本不听我们 IT 部门的话。
+
+---
+[IT系统附注]
+账号详情：
+- 用户ID: 77-THORNE-RES
+- 权限等级: SCL-3 (研究员专用)
+- 状态: [数据删除]
+- 最后登录: 1998-03-15 15:18
+
+⚠ 警告：该账号在 3月15日事故后显示异常活动模式。建议立即停用。`
         },
         {
             id: "ITEM-303",

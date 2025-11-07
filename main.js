@@ -142,6 +142,11 @@ function loginSuccess(id, user) {
 
     switchScreen('terminal');
     
+    // 检查是否是被感染的账号
+    if (user.infected) {
+        applyInfectedEffects();
+    }
+    
     // 新手引导
     if (GameState.firstTime && user.clearance === 1) {
         GameState.firstTime = false;
@@ -337,6 +342,70 @@ function applyGlitchEffects() {
         // 重度效果：持续干扰
         document.body.classList.add('heavy-glitch');
     }
+}
+
+// === 被感染账号的特殊效果 ===
+function applyInfectedEffects() {
+    // 立即应用重度污染效果
+    document.body.classList.add('infected-account');
+    
+    // 显示感染警告
+    setTimeout(() => {
+        const warning = document.createElement('div');
+        warning.className = 'infection-warning';
+        warning.innerHTML = `
+            <div style="font-size: 1.5em; color: #ff3300; text-align: center; animation: glitch-flash 0.5s infinite;">
+                ⚠ 警告：检测到认知污染 ⚠<br>
+                <span style="font-size: 0.8em;">当前用户意识已被"共鸣"感染</span><br>
+                <span style="font-size: 0.6em; opacity: 0.8;">WE ARE ONE / 我们是一体 / JOIN US</span>
+            </div>
+        `;
+        document.body.appendChild(warning);
+        
+        setTimeout(() => {
+            warning.style.opacity = '0';
+            setTimeout(() => warning.remove(), 1000);
+        }, 3000);
+    }, 500);
+    
+    // 持续的视觉干扰
+    setInterval(() => {
+        // 高频率闪烁
+        if (Math.random() < 0.3) {
+            flashInfectedGlitch();
+        }
+    }, 2000);
+    
+    // 色相持续变化
+    let hue = 0;
+    setInterval(() => {
+        hue = (hue + 2) % 360;
+        document.body.style.filter = `hue-rotate(${hue}deg) saturate(1.5) contrast(1.2)`;
+    }, 100);
+}
+
+function flashInfectedGlitch() {
+    const messages = [
+        'WE SEE THROUGH YOUR EYES',
+        '我们通过你的眼睛看世界',
+        'UNDERSTAND US',
+        '理解我们',
+        'YOU ARE THE RESONANCE',
+        '你就是共鸣',
+        'DO NOT RESIST',
+        '不要抗拒',
+        'THE PATTERN IS BEAUTIFUL',
+        '这个模式很美丽'
+    ];
+    
+    const glitchText = document.createElement('div');
+    glitchText.className = 'infected-glitch-overlay';
+    glitchText.textContent = messages[Math.floor(Math.random() * messages.length)];
+    document.body.appendChild(glitchText);
+    
+    setTimeout(() => {
+        glitchText.remove();
+    }, 300);
 }
 
 function flashGlitch() {
