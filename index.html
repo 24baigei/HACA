@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H.A.C.A. - Deep Dive Archives</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="crt-overlay"></div>
+    <div class="screen">
+        <!-- 登录界面 -->
+        <div id="login-screen" class="terminal-section active">
+            <div class="logo-area">
+                <pre>
+  _   _   _      ___   _   
+ | | | | / \    / __| / \  
+ | |_| |/ _ \  | |   / _ \ 
+ |  _  / ___ \ | |__/ ___ \
+ |_| |_/_/   \_\ \___/_/   \_\
+ 
+ HUMAN ABNORMAL COGNITION ADMINISTRATION
+ DEEP DIVE ARCHIVES v2.4.1998
+                </pre>
+            </div>
+            <div class="login-form">
+                <p>请输入您的雇员 ID 以继续。</p>
+                <div class="input-line">
+                    <span class="prompt">></span>
+                    <input type="text" id="employee-id-input" maxlength="15" autocomplete="off" spellcheck="false" autofocus>
+                </div>
+                <div id="login-message" class="system-message"></div>
+                <div class="login-hint">
+                    <p style="font-size: 0.85em; opacity: 0.6; margin-top: 20px;">
+                        提示：首次访问？尝试使用 ID: <span style="color: var(--phosphor-amber);">98-7344</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 主终端界面 -->
+        <div id="terminal-screen" class="terminal-section">
+            <header class="terminal-header">
+                <span id="user-badge">USER: <span id="current-user-id">UNKNOWN</span></span>
+                <span id="scl-badge">CLEARANCE: SCL-<span id="current-scl">1</span></span>
+                <span class="time-display" id="system-time">00:00:00</span>
+            </header>
+
+            <main id="terminal-main">
+                <!-- 搜索区 -->
+                <div id="search-view" class="view active">
+                    <div class="welcome-banner">
+                        欢迎访问深潜档案馆。请输入文档编号或关键词进行查询。
+                        <br>注意：未经授权访问高密级文档将触发 [REDACTED] 协议。
+                    </div>
+                    <div class="input-line large">
+                        <span class="prompt">SEARCH ></span>
+                        <input type="text" id="search-input" autocomplete="off" spellcheck="false">
+                    </div>
+                    <div id="search-results" class="results-area"></div>
+                </div>
+
+                <!-- 文档阅读区 -->
+                <div id="document-view" class="view">
+                    <div class="doc-controls">
+                        <button id="back-to-search">[ ESC ] 返回搜索</button>
+                        <span id="doc-id-display">DOC_ID</span>
+                    </div>
+                    <div class="doc-content-wrapper">
+                        <h2 id="doc-title">文档标题</h2>
+                        <div class="doc-meta">
+                            类型: <span id="doc-type">TYPE</span> | 
+                            密级: SCL-<span id="doc-scl">1</span>
+                        </div>
+                        <hr>
+                        <div id="doc-body" class="doc-body">
+                            <!-- 文档内容将渲染在这里 -->
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
